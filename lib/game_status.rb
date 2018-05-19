@@ -16,16 +16,23 @@ WIN_COMBINATIONS = [
 ]
 
 def won?(board)
-  xes = []
-  oes = []
-  counter = 0
-  board.each do |pos|
-    if (pos == "X")
-      xes << counter
-    elsif (pos == "O")
-      oes << counter
+  WIN_COMBINATIONS.each do |wincombo|
+    win_index_1 = wincombo[0]
+    win_index_2 = wincombo[1]
+    win_index_3 = wincombo[2]
+    
+    position_1 = board[win_index_1]
+    position_2 = board[win_index_2]
+    position_3 = board[win_index_3]
+    
+    if (position_1 == "X" && position_2 == "X" && position_3 == "X")
+      puts "Player 'X' has won!!!"
+      return wincombo
+    elsif (position_1 == "O" && position_2 == "O" && position_3 == "O")
+      puts "Player 'O' has won!!!"
+      return wincombo
+    else
+      return false
     end
-    counter++
   end
-  
 end
